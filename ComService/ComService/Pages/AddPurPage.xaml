@@ -1,0 +1,49 @@
+﻿<Page x:Class="ComService.Pages.AddPurPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComService.Pages" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPurPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock   Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TBlockHeader}" Text="Создание закупки"   />
+            <StackPanel Grid.Row="3" >
+                <StackPanel Orientation="Horizontal">
+                    <Label FontWeight="ExtraBold" Content="Время закупки" FontSize="15" Margin="5"/>
+                    <xctk:DateTimePicker  AutoCloseCalendar="True" AutoClipTimeParts="True" Name="DtpD" Width="230" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label FontWeight="ExtraBold" Content="Комплектующие"  Margin="5" FontSize="15"/>
+                    <ComboBox x:Name="CbDetail" DisplayMemberPath="DetailName" Style="{StaticResource CuteComboBox}"  Margin="5"  Width="190" Height="25"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label FontWeight="ExtraBold" Content="Магазин"  Margin="5" FontSize="15"/>
+                    <ComboBox x:Name="CbShop" DisplayMemberPath="ShopName" Style="{StaticResource CuteComboBox}"  Margin="60 0 0 0"  Width="190" Height="25"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label  HorizontalAlignment="Left" VerticalAlignment="Center" IsHitTestVisible="False"  Content="Количество" Foreground="#6A5ACD" FontSize="15"  Margin="5" />
+                    <TextBox  x:Name="TbQua" PreviewTextInput="TbQua_PreviewTextInput"  MaxLength="20" Margin="40 0 0 0" FontSize="16" Width="190" Height="25"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Grid.Row="4"    x:Name="SaveBtn" Click="SaveBtn_Click"  Content="Сохранить"  Height="40" Width="130" Margin="10" VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Page>

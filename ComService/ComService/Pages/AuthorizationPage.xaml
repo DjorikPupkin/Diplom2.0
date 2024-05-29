@@ -1,0 +1,86 @@
+﻿<Page x:Class="ComService.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComService.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="">
+
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock   Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource TBlockHeader}" Text="Страница Авторизации"  />
+            <StackPanel Grid.Row="3">
+                <Grid>
+                    <TextBox  x:Name="TbLog"   MaxLength="20" HorizontalAlignment="Center"  Margin="5"  FontSize="16"  Foreground="#6A5ACD" Width="185" Height="25"/>
+                    <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"  Text="Логин"  FontSize="16" Foreground="#6A5ACD" Margin="5 5 125 5" >
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=TbLog}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+                <Grid>
+                    <PasswordBox  x:Name="PbPass"   VerticalAlignment="Top" FontSize="16" Foreground="#6A5ACD"  MaxLength="20"   Margin="5 5 5 5"  Width="185" Height="25">
+                        <PasswordBox.Style>
+                            <Style TargetType="PasswordBox">
+                                <EventSetter Event="PasswordChanged" Handler="PasswordBox_PasswordChanged" />
+                                <Setter Property="BorderThickness" Value="0.5"/>
+                                <Setter Property="Padding" Value="1" />
+                                <Setter Property="Margin" Value="5" />
+                                <Setter Property="FontSize" Value="16" />
+                                <Setter Property="FontFamily" Value="Candara" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                            <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" CornerRadius="10">
+                                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </PasswordBox.Style>
+                    </PasswordBox>
+
+                    <TextBlock Style="{StaticResource TB}" x:Name="WM" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"   Text="Пароль"  Margin="5 5 125 5">
+
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+            <Button Grid.Row="4" Content="Авторизоваться"  Foreground="White" FontSize="13" Width="140" Height="40" Click="Button_Click"/>
+
+
+        </Grid>
+    </Grid>
+</Page>

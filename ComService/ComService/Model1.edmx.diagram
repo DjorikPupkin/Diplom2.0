@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae301cf1b32d4958b0ff2506cc25da7b" Name="Diagram1">
+        <EntityTypeShape EntityType="SeerviceComModel.ApplicationUs" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.Detail" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.DetailType" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.Purchase" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.Role" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.Shops" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.Status" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.Storage" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeerviceComModel.User" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="SeerviceComModel.FK_ApplicationUs_Detail" ManuallyRouted="false" />
+        <AssociationConnector Association="SeerviceComModel.FK_ApplicationUs_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SeerviceComModel.FK_ApplicationUs_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SeerviceComModel.FK_Detail_DetailType" ManuallyRouted="false" />
+        <AssociationConnector Association="SeerviceComModel.FK_Purchase_Detail" ManuallyRouted="false" />
+        <AssociationConnector Association="SeerviceComModel.FK_Storage_Detail1" ManuallyRouted="false" />
+        <AssociationConnector Association="SeerviceComModel.FK_Purchase_Shops" ManuallyRouted="false" />
+        <AssociationConnector Association="SeerviceComModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeerviceComModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ApplicationUs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Comid" Type="Int32" Nullable="false" />
+    <Property Name="DoneAplDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Detailid" Type="Int32" />
+    <Property Name="Worid" Type="Int32" />
+    <Property Name="DateTimeWorker" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Detail" Relationship="Self.FK_ApplicationUs_Detail" FromRole="ApplicationUs" ToRole="Detail" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_ApplicationUs_Status" FromRole="ApplicationUs" ToRole="Status" />
+    <NavigationProperty Name="User" Relationship="Self.FK_ApplicationUs_User" FromRole="ApplicationUs" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DetailName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DTypeID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ApplicationUs" Relationship="Self.FK_ApplicationUs_Detail" FromRole="Detail" ToRole="ApplicationUs" />
+    <NavigationProperty Name="DetailType" Relationship="Self.FK_Detail_DetailType" FromRole="Detail" ToRole="DetailType" />
+    <NavigationProperty Name="Purchase" Relationship="Self.FK_Purchase_Detail" FromRole="Detail" ToRole="Purchase" />
+    <NavigationProperty Name="Storage" Relationship="Self.FK_Storage_Detail1" FromRole="Detail" ToRole="Storage" />
+  </EntityType>
+  <EntityType Name="DetailType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Detail" Relationship="Self.FK_Detail_DetailType" FromRole="DetailType" ToRole="Detail" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DetailId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="ShopId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Detail" Relationship="Self.FK_Purchase_Detail" FromRole="Purchase" ToRole="Detail" />
+    <NavigationProperty Name="Shops" Relationship="Self.FK_Purchase_Shops" FromRole="Purchase" ToRole="Shops" />
+    <Property Name="PurchaseDateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Shops">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Purchase" Relationship="Self.FK_Purchase_Shops" FromRole="Shops" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ApplicationUs" Relationship="Self.FK_ApplicationUs_Status" FromRole="Status" ToRole="ApplicationUs" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DetailId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="Detail" Relationship="Self.FK_Storage_Detail1" FromRole="Storage" ToRole="Detail" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Roleid" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ApplicationUs" Relationship="Self.FK_ApplicationUs_User" FromRole="User" ToRole="ApplicationUs" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_ApplicationUs_Detail">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="0..1" />
+    <End Role="ApplicationUs" Type="Self.ApplicationUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ApplicationUs">
+        <PropertyRef Name="Detailid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationUs_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="ApplicationUs" Type="Self.ApplicationUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ApplicationUs">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationUs_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ApplicationUs" Type="Self.ApplicationUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ApplicationUs">
+        <PropertyRef Name="Worid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detail_DetailType">
+    <End Role="DetailType" Type="Self.DetailType" Multiplicity="0..1" />
+    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetailType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="DTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Detail">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="DetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Storage_Detail1">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="1" />
+    <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Storage">
+        <PropertyRef Name="DetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Shops">
+    <End Role="Shops" Type="Self.Shops" Multiplicity="1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shops">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="ShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SeerviceComEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ApplicationUs" EntityType="Self.ApplicationUs" />
+    <EntitySet Name="Detail" EntityType="Self.Detail" />
+    <EntitySet Name="DetailType" EntityType="Self.DetailType" />
+    <EntitySet Name="Purchase" EntityType="Self.Purchase" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Shops" EntityType="Self.Shops" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="Storage" EntityType="Self.Storage" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_ApplicationUs_Detail" Association="Self.FK_ApplicationUs_Detail">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="ApplicationUs" EntitySet="ApplicationUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationUs_Status" Association="Self.FK_ApplicationUs_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="ApplicationUs" EntitySet="ApplicationUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationUs_User" Association="Self.FK_ApplicationUs_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ApplicationUs" EntitySet="ApplicationUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detail_DetailType" Association="Self.FK_Detail_DetailType">
+      <End Role="DetailType" EntitySet="DetailType" />
+      <End Role="Detail" EntitySet="Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Detail" Association="Self.FK_Purchase_Detail">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Storage_Detail1" Association="Self.FK_Storage_Detail1">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="Storage" EntitySet="Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Shops" Association="Self.FK_Purchase_Shops">
+      <End Role="Shops" EntitySet="Shops" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

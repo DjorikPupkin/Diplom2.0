@@ -1,0 +1,17 @@
+﻿<Window x:Class="ComService.WindowInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComService"
+        mc:Ignorable="d"
+        Title="WindowInfo" Height="450" Width="800">
+    <Grid>
+        <Label Content="Информация о приложении" FontSize="25"  HorizontalAlignment="Center"/>
+        <TextBlock TextAlignment="Center" Style="{StaticResource TBlockHeader}" FontSize="23" TextWrapping="Wrap" Width="700" Text="Программа ServiceCom - это программное обеспечение, разработанное для удобного распределения заявок для ремонта и исправления неполадок в компьютерах.
+С помощью этой программы пользователи получают доступ к спектру инструментов и функций, которые помогают составить заявку и отправить в дальнейшем в работу специалистов.
+Одной из ключевых особенностей программы является ее интуитивно понятный интерфейс, который позволяет даже неопытным пользователям легко ориентироваться и выполнять необходимые операции.
+Программа предлагает такие возможности, как составление отчетов, оформлении закупок, составление заявок на ремонт и многое другое.
+"/>
+    </Grid>
+</Window>

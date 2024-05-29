@@ -1,0 +1,49 @@
+﻿<Page x:Class="ComService.Pages.AddWorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComService.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+       
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock  Style="{StaticResource TBlockHeader}" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"  Text="Добавление работника"   />
+            <StackPanel Grid.Row="3" >
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label  HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"  Content="Имя"  FontSize="16" Foreground="#6A5ACD" Margin="5" />
+                        <TextBox  x:Name="TbWN"    Margin="25 0 0 0"   Width="260" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label  HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"  Content="Логин"  FontSize="16" Foreground="#6A5ACD" Margin="5" />
+                        <TextBox  x:Name="TbWL"  Margin="19 0 0 0 " Width="260" Height="25"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label  HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" IsHitTestVisible="False"  Content="Пароль" FontSize="16" Foreground="#6A5ACD"  />
+                    <TextBox  x:Name="TbWP"  Width="260" Margin="10 0 0 0" Height="25"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Button Grid.Row="4"    x:Name="NewWork" Click="NewWork_Click"  Content="Сохранить" Height="40" Width="130" Margin="10" VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Page>
